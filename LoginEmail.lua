@@ -30,37 +30,58 @@ function scene:show( event )
 		-- Called when the scene is still off screen and is about to move on screen
 	elseif phase == "did" then
 		local function textListener( event )
-	 		-- User begins editing "defaultField"
+	 		-- User begins editing "email"
 		    if ( event.phase == "began" ) then
 		        event.target.text = " "
 		        event.target: setTextColor( 0,0,0 ) --css rgb color
 		 
 		    elseif ( event.phase == "ended" or event.phase == "submitted" ) then
-		        -- Output resulting text from "defaultField"
-		        --control = true
-		       -- composer.gotoScene( "level2", "fade", 500 )		 
+		    	local emailUser = (event.target.text)	 
 		    elseif ( event.phase == "editing" ) then
+
 		      
 		    end
 		end
-		textBox = native.newTextBox( 160, 240, 280, 140 )
-textBox.font = native.newFont( "Helvetica-Bold", 16 )
-textBox:setTextColor( 0.8, 0.8, 0.8 )
-textBox.hasBackground = false
-textBox.text = "Hello, world!"
+		local function textListenerpass( event )
+	 		-- User begins editing "email"
+		    if ( event.phase == "began" ) then
+		        event.target.text = " "
+		        event.target: setTextColor( 0,0,0 ) --css rgb color
+		 
+		    elseif ( event.phase == "ended" or event.phase == "submitted" ) then
+		    	local emailUser = (event.target.text)	 
+		    elseif ( event.phase == "editing" ) then
 
-		local email = display.newText( "Login", 160, 120, "Codystar-Regular.ttf", 40 )
-		email:setFillColor(255,255,255 )
+		      
+		    end
+		end
 
-		defaultField = native.newTextField(300,300,300,30)
-		defaultField:resizeHeightToFitFont()
-		defaultField.text = "Qual o email?"
-		defaultField:setTextColor( 0.8, 0.8, 0.8 )
-		defaultField.x = 165 + display.screenOriginX 
-		defaultField.y = 440 + display.screenOriginY
-		defaultField:addEventListener( "userInput", textListener )
-		local exemplo1 = display.newText( "Exemplo: usuario@exemplo.com",125, 420,native.systemFont, 15  )
+		local login = display.newText( "Login", 160, 120, "Codystar-Regular.ttf", 40 )
+		login:setFillColor(255,255,255 )
+
+		local emailLabel = display.newText( "Email", 160, 235, "Codystar-Regular.ttf", 30 )
+		emailLabel:setFillColor(255,255,255 )
+
+		local email = native.newTextField(300,300,300,30)
+		email:resizeHeightToFitFont()
+		email.text = "E-mail"
+		email:setTextColor( 0.8, 0.8, 0.8 )
+		email.x = 165 + display.screenOriginX 
+		email.y = 320 + display.screenOriginY
+		email:addEventListener( "userInput", textListener )
+		local exemplo1 = display.newText( "Exemplo: usuario@exemplo.com",125, 298,native.systemFont, 15  )
 		exemplo1:setFillColor(255,255,255 )
+
+
+		local PasswLabel = display.newText( "Senha", 160, 355, "Codystar-Regular.ttf", 30 )
+		PasswLabel:setFillColor(255,255,255 )
+		local passW = native.newTextField(300,300,300,30)
+		passW:resizeHeightToFitFont()
+		passW.text = "Senha"
+		passW:setTextColor( 0.8, 0.8, 0.8 )
+		passW.x = 165 + display.screenOriginX 
+		passW.y = 440 + display.screenOriginY
+		passW:addEventListener( "userInput", textListenerpass )
 	end
 end
 
